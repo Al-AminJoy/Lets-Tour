@@ -4,6 +4,7 @@
     <string name="etOfficeNumber">Office Number</string>
     <string name="etEmailAddress">Email Address</string>
     <string name="etPassword">Password</string>
+    <string name="map_debug_key">AIzaSyDLym-0AJnvaKFSIj6l_6cqttYDu0VwxRM</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main">MainActivity</string>

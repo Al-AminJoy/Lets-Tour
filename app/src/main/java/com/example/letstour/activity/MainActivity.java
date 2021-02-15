@@ -4,15 +4,22 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -28,6 +35,7 @@ import com.example.letstour.fragment.CancelReqFragment;
 import com.example.letstour.fragment.CreatePostFragment;
 import com.example.letstour.fragment.HomeFragment;
 import com.example.letstour.fragment.JoinReqFragment;
+import com.example.letstour.fragment.MapFragment;
 import com.example.letstour.fragment.MyPostFragment;
 import com.example.letstour.services.BackgroundService;
 import com.example.letstour.services.CheckConnectivity;
@@ -45,24 +53,46 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static final String BROADCAST = "checkinternet";
     private IntentFilter intentFilter;
     private EventRepository eventRepository;
+    private static final int PERMISSION_REQUEST_CODE = 999;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("CHANNEL_ID", "Channel_Name", importance);
+            // channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
         intentFilter = new IntentFilter();
         intentFilter.addAction(BROADCAST);
         Intent serviceIntent = new Intent(this, CheckConnectivity.class);
         startService(serviceIntent);
+
         if (CheckConnectivity.isOnline(getApplicationContext())){
            // Toast.makeText(getApplicationContext(),"true",Toast.LENGTH_SHORT).show();
         }else{
-            //showNotification();
+            showNotification();
              Toast.makeText(getApplicationContext(),"Please Connect With Internet",Toast.LENGTH_SHORT).show();
         }
 
-
+        checkPermissions();
     }
+
+    private void showNotification() {
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_warning)
+                .setContentTitle("Warning !!!")
+                .setContentText("No Internet")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(true);
+        NotificationManagerCompat compat = NotificationManagerCompat.from(this);
+        compat.notify(1, builder.build());
+        }
 
 
     public BroadcastReceiver broadcastReceiver=new BroadcastReceiver() {
@@ -103,6 +133,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         registerReceiver(broadcastReceiver,intentFilter);
         backgroundService=new Intent(this, BackgroundService.class);
         startService(backgroundService);
+        checkPermissions();
+    }
+    private void checkPermissions(){
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+        {
+            requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},PERMISSION_REQUEST_CODE);
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case PERMISSION_REQUEST_CODE:
+                if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    Toast.makeText(this,"Permission granted", Toast.LENGTH_SHORT).show();
+                }else{
+                    checkPermissions();
+                }
+                break;
+        }
     }
     @Override
     protected void onPause() {
@@ -147,6 +196,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         nav_Menu.findItem(R.id.nav_Profile).setVisible(false);
         nav_Menu.findItem(R.id.nav_join_req).setVisible(false);
         nav_Menu.findItem(R.id.nav_cancel_req).setVisible(false);
+        nav_Menu.findItem(R.id.nav_My_Post).setVisible(false);
     }
     private void loadFragment() {
         getSupportFragmentManager().beginTransaction().replace(R.id.main_panel,new HomeFragment()).commit();
@@ -184,6 +234,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_My_Post: {
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_panel,
                         new MyPostFragment()).commit();
+                break;
+            }
+            case R.id.nav_map: {
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_panel,
+                        new MapFragment()).commit();
                 break;
             }
             case R.id.nav_Logout: {

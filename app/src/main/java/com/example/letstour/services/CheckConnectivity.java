@@ -43,7 +43,7 @@ public class CheckConnectivity extends Service {
     private Runnable perioud =new Runnable() {
         @Override
         public void run() {
-            handler.postDelayed(perioud,5*1000- SystemClock.elapsedRealtime()%1000);
+            handler.postDelayed(perioud,30*1000- SystemClock.elapsedRealtime()%1000);
 
             Intent intent = new Intent();
             intent.setAction(MainActivity.BROADCAST);
