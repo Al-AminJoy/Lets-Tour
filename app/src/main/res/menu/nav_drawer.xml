@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_Home"
+            android:icon="@drawable/ic_home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_Profile"
+            android:icon="@drawable/ic_profile"
+            android:title="Create Post" />
+        <item
+            android:id="@+id/nav_My_Post"
+            android:icon="@drawable/ic_post"
+            android:title="My Post" />
+        <item
+            android:id="@+id/nav_join_req"
+            android:icon="@drawable/ic_connect"
+            android:title="Join Request" />
+        <item
+            android:id="@+id/nav_cancel_req"
+            android:icon="@drawable/ic_cancel"
+            android:title="Cancel Request" />
+        <item
+            android:id="@+id/nav_Logout"
+            android:icon="@drawable/ic_profile"
+            android:title="Logout" />
+
+    </group>
+</menu>

@@ -1,0 +1,56 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="textSizeS">8sp</dimen>
+    <dimen name="textSizeM">14sp</dimen>
+    <dimen name="textSizeL">16sp</dimen>
+    <dimen name="textSizeXL">18sp</dimen>
+
+    <dimen name="dimen2dp">2dp</dimen>
+    <dimen name="dimen4dp">4dp</dimen>
+    <dimen name="dimen8dp">8dp</dimen>
+    <dimen name="dimen16dp">16dp</dimen>
+    <dimen name="dimen18dp">18dp</dimen>
+    <dimen name="dimen24dp">24dp</dimen>
+    <dimen name="dimen32dp">32dp</dimen>
+    <dimen name="dimen48dp">48dp</dimen>
+    <dimen name="dimen64dp">64dp</dimen>
+    <dimen name="dimen80dp">80dp</dimen>
+    <dimen name="dimen100dp">100dp</dimen>
+    <dimen name="dimen128dp">128dp</dimen>
+
+    <dimen name="margin2dp">2dp</dimen>
+    <dimen name="margin4dp">4dp</dimen>
+    <dimen name="margin6dp">6dp</dimen>
+    <dimen name="margin8dp">8dp</dimen>
+    <dimen name="margin10dp">10dp</dimen>
+    <dimen name="margin12dp">12dp</dimen>
+    <dimen name="margin14dp">14dp</dimen>
+    <dimen name="margin16dp">16dp</dimen>
+    <dimen name="margin18dp">18dp</dimen>
+    <dimen name="margin20dp">20dp</dimen>
+    <dimen name="margin22dp">22dp</dimen>
+    <dimen name="margin24dp">24dp</dimen>
+    <dimen name="margin32dp">32dp</dimen>
+    <dimen name="margin64dp">64dp</dimen>
+
+
+    <dimen name="padding2dp">2dp</dimen>
+    <dimen name="padding4dp">4dp</dimen>
+    <dimen name="padding6dp">6dp</dimen>
+    <dimen name="padding8dp">8dp</dimen>
+    <dimen name="padding10dp">10dp</dimen>
+    <dimen name="padding12dp">12dp</dimen>
+    <dimen name="padding14dp">14dp</dimen>
+    <dimen name="padding16dp">16dp</dimen>
+    <dimen name="padding18dp">18dp</dimen>
+    <dimen name="padding20dp">20dp</dimen>
+    <dimen name="padding22dp">22dp</dimen>
+    <dimen name="padding24dp">24dp</dimen>
+    <dimen name="padding32dp">32dp</dimen>
+    <dimen name="padding64dp">64dp</dimen>
+</resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "682964376809",
+    "project_id": "lets-tour-89444",
+    "storage_bucket": "lets-tour-89444.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682964376809:android:2754b1a531c22840682478",
+        "android_client_info": {
+          "package_name": "com.example.letstour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682964376809-59re1bqc9kr33fmcr0heetkqeefqjcga.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKM3uWR4gbUHOrQ2HZcRqjmo6tR5RZIDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682964376809-59re1bqc9kr33fmcr0heetkqeefqjcga.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

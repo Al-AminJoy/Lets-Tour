@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/basic"
+    android:orientation="vertical"
+    android:padding="@dimen/padding4dp"
+    tools:context=".fragment.EventDescriptionFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin8dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textSizeL"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="Saint Martin's"
+            android:padding="@dimen/padding4dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textSizeL"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="Agency Name"
+            android:padding="@dimen/padding4dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textSizeM"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="@string/saint_description"
+            android:padding="@dimen/padding4dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textSizeM"
+            android:textColor="@color/white"
+            android:text="Person : 20"
+            android:padding="@dimen/padding4dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textSizeM"
+            android:textColor="@color/white"
+            android:text="Cost : 80000"
+            android:padding="@dimen/padding4dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textSizeM"
+            android:textColor="@color/white"
+            android:text="Date: 01-01-21"
+            android:padding="@dimen/padding4dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textSizeM"
+            android:textColor="@color/white"
+            android:text="Bordering Point: Technical More"
+            android:padding="@dimen/padding4dp"
+            />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_event_desc_join"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cornerRadius="@dimen/margin4dp"
+                android:layout_marginLeft="@dimen/margin2dp"
+                android:layout_marginRight="@dimen/margin2dp"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="@dimen/margin18dp"
+                android:padding="@dimen/padding14dp"
+                app:rippleColor="@color/black"
+                android:text="Join Now"
+                android:backgroundTint="@color/secondary"
+                app:strokeColor="@color/white"
+                app:strokeWidth="@dimen/margin2dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSizeM"
+                />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_event_desc_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cornerRadius="@dimen/margin4dp"
+                android:layout_marginLeft="@dimen/margin2dp"
+                android:layout_marginRight="@dimen/margin2dp"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="@dimen/margin18dp"
+                android:padding="@dimen/padding14dp"
+                app:rippleColor="@color/black"
+                android:text="Join Now"
+                android:backgroundTint="@color/secondary"
+                app:strokeColor="@color/white"
+                app:strokeWidth="@dimen/margin2dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSizeM"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>

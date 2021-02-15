@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+<androidx.cardview.widget.CardView
+    android:id="@+id/cv_event_lay"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/margin4dp"
+    app:cardBackgroundColor="@color/basic"
+    app:cardCornerRadius="@dimen/dimen2dp"
+    app:cardElevation="@dimen/dimen2dp"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@color/light"
+            android:padding="@dimen/padding12dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_event_lay_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSizeL"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:text="Saint Martin's"
+                android:padding="@dimen/padding4dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lin_lay_event_lay_mini_desc"
+            android:padding="@dimen/padding12dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_event_lay_agency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSizeL"
+                android:textColor="@color/white"
+                android:text="Agency : Tour Agency"
+                android:padding="@dimen/padding4dp"
+                />
+            <TextView
+                android:id="@+id/tv_event_lay_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSizeM"
+                android:textColor="@color/white"
+                android:text="Date: 01-01-21"
+                android:padding="@dimen/padding4dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/padding8dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_event_lay_drop_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_down_arrow"
+                android:layout_marginRight="@dimen/margin8dp"
+                android:layout_marginLeft="@dimen/margin8dp"
+                android:visibility="visible"
+                android:layout_gravity="center"
+                />
+            <LinearLayout
+                android:id="@+id/lin_lay_event_lay_decs"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/padding8dp"
+                android:visibility="gone"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_event_lay_decs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSizeM"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="@string/saint_description"
+                    android:padding="@dimen/padding4dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_event_lay__decs_agency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSizeL"
+                    android:textColor="@color/white"
+                    android:text="Agency : Tour Agency"
+                    android:layout_marginTop="@dimen/margin12dp"
+                    android:padding="@dimen/padding4dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_event_lay_person"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSizeM"
+                    android:textColor="@color/white"
+                    android:text="Person : 20"
+                    android:padding="@dimen/padding4dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_event_lay_cost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSizeM"
+                    android:textColor="@color/white"
+                    android:text="Cost : 80000"
+                    android:padding="@dimen/padding4dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_event_lay_decs_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSizeM"
+                    android:textColor="@color/white"
+                    android:text="Date: 01-01-21"
+                    android:padding="@dimen/padding4dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_event_lay_bordering"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSizeM"
+                    android:textColor="@color/white"
+                    android:text="Bordering Point: Technical More"
+                    android:padding="@dimen/padding4dp"
+                    />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/bt_event_lay_join"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cornerRadius="@dimen/margin4dp"
+                        android:layout_marginLeft="@dimen/margin2dp"
+                        android:layout_marginRight="@dimen/margin2dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginBottom="@dimen/margin18dp"
+                        android:padding="@dimen/padding14dp"
+                        app:rippleColor="@color/black"
+                        android:text="Join Now"
+                        android:backgroundTint="@color/secondary"
+                        app:strokeColor="@color/white"
+                        app:strokeWidth="@dimen/margin2dp"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSizeM"
+                        />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/bt_event_lay_cancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cornerRadius="@dimen/margin4dp"
+                        android:layout_marginLeft="@dimen/margin2dp"
+                        android:layout_marginRight="@dimen/margin2dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginBottom="@dimen/margin18dp"
+                        android:padding="@dimen/padding14dp"
+                        app:rippleColor="@color/black"
+                        android:text="Cancel"
+                        android:backgroundTint="@color/secondary"
+                        app:strokeColor="@color/white"
+                        app:strokeWidth="@dimen/margin2dp"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSizeM"
+                        android:layout_marginStart="@dimen/margin4dp"
+                        />
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/iv_event_lay_drop_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_drop_up_arrow"
+                    android:visibility="visible"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/margin8dp"
+                    android:layout_marginLeft="@dimen/margin8dp"
+                    />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+</LinearLayout>
