@@ -1,6 +1,9 @@
 package com.example.letstour.model;
 
-public class Post {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Post implements Parcelable {
     private int person;
     private int cost;
     private String location;
@@ -24,6 +27,31 @@ public class Post {
         this.agencyName = agencyName;
         this.agencyKey = agencyKey;
     }
+
+    protected Post(Parcel in) {
+        person = in.readInt();
+        cost = in.readInt();
+        location = in.readString();
+        borderingPoint = in.readString();
+        description = in.readString();
+        date = in.readString();
+        agencyName = in.readString();
+        agencyKey = in.readString();
+        key = in.readString();
+    }
+
+    public static final Creator<Post> CREATOR = new Creator<Post>() {
+        @Override
+        public Post createFromParcel(Parcel in) {
+            return new Post(in);
+        }
+
+        @Override
+        public Post[] newArray(int size) {
+            return new Post[size];
+        }
+    };
+
     public String getKey() {
         return key;
     }
@@ -68,4 +96,36 @@ public class Post {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(person);
+        dest.writeInt(cost);
+        dest.writeString(location);
+        dest.writeString(borderingPoint);
+        dest.writeString(description);
+        dest.writeString(date);
+        dest.writeString(agencyName);
+        dest.writeString(agencyKey);
+        dest.writeString(key);
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "person=" + person +
+                ", cost=" + cost +
+                ", location='" + location + '\'' +
+                ", borderingPoint='" + borderingPoint + '\'' +
+                ", description='" + description + '\'' +
+                ", date='" + date + '\'' +
+                ", agencyName='" + agencyName + '\'' +
+                ", agencyKey='" + agencyKey + '\'' +
+                ", key='" + key + '\'' +
+                '}';
+    }
 }

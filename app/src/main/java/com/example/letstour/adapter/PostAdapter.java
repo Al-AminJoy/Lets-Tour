@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.letstour.R;
+import com.example.letstour.activity.DescriptionActivity;
 import com.example.letstour.model.CancelRequest;
 import com.example.letstour.model.JoinRequest;
 import com.example.letstour.model.Post;
@@ -40,7 +41,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
     @NonNull
     @Override
     public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(context).inflate(R.layout.event_layout,parent,false);
+        View view= LayoutInflater.from(context).inflate(R.layout.event_layout_design,parent,false);
         return new PostViewHolder(view);
     }
 
@@ -50,13 +51,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
         holder.tvLocation.setText(list.getLocation());
         holder.tvAgency.setText("Agency : "+list.getAgencyName());
         holder.tvDate.setText("Date : "+list.getDate());
-        holder.tvDecs.setText(list.getDescription());
-        holder.tvPerson.setText("Person : "+list.getPerson());
+        holder.tvPerson.setText("Limit : "+list.getPerson());
         holder.tvCost.setText("Cost : "+list.getCost());
-        holder.tvBordering.setText("Bordering : "+list.getBorderingPoint());
-        holder.tvDecsAgency.setText("Agency : "+list.getAgencyName());
-        holder.tvDecsDate.setText("Date : "+list.getDate());
-        holder.ivDropDown.setOnClickListener(new View.OnClickListener() {
+      /*  holder.tvBordering.setText("Bordering : "+list.getBorderingPoint());
+        holder.tvDecsDate.setText("Date : "+list.getDate());*/
+       /* holder.ivDropDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 holder.ivDropDown.setVisibility(View.GONE);
@@ -120,6 +119,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
                                 Toast.makeText(context,"Send Request",Toast.LENGTH_SHORT).show();
                             }
                         });
+            }
+        });*/
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, DescriptionActivity.class);
+                intent.putExtra("POST",list.getKey());
+                context.startActivity(intent);
             }
         });
 

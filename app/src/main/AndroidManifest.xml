@@ -40,6 +40,7 @@
             android:exported="false" />
 
         <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.DescriptionActivity" />
         <activity android:name=".activity.AgencySignUpActivity" />
         <activity android:name=".activity.SignUpActivity" />
         <activity android:name=".activity.UserSignUpActivity" />

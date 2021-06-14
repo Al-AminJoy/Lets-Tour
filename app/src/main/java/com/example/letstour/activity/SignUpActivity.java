@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.letstour.R;
 import com.google.android.material.button.MaterialButton;
@@ -32,6 +33,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         if (v.getId()==R.id.btUserSignUpId){
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
             Intent intent=new Intent(SignUpActivity.this,UserSignUpActivity.class);
             intent.putExtra("email",email);
             intent.putExtra("image",userImage);

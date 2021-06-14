@@ -34,6 +34,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG ="LoginActivity" ;
     MaterialButton btStart;
     boolean exist;
     boolean agencyExist;
@@ -71,12 +72,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-              //  Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
+                Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
                 firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                // Log.w(TAG, "Google sign in failed", e);
                 // ...
+                Log.d(TAG, "firebaseAuthWithGoogle:" + e);
             }
         }
     }
@@ -89,7 +91,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btStart=findViewById(R.id.btStartId);
         btStart.setOnClickListener(this);
      if (currentUser!=null){
-          //Toast.makeText(getApplicationContext(),"I am on Start",Toast.LENGTH_SHORT).show();
+          Toast.makeText(getApplicationContext(),"I am on Start",Toast.LENGTH_SHORT).show();
           startActivity(new Intent(LoginActivity.this,MainActivity.class));
           finish();
       }
@@ -102,6 +104,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(),"I am on Success",Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
                             String currentEmail=user.getEmail();
                           checkUser(currentEmail,user);
@@ -109,7 +112,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
 
 
-                });
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "firebaseAuthWithGoogle:" + e);
+            }
+        });
     }
     private void checkUser(String currentEmail, FirebaseUser user) {
         exist=false;
