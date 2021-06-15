@@ -2,6 +2,7 @@ package com.example.letstour.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -37,11 +38,14 @@ import com.example.letstour.fragment.HomeFragment;
 import com.example.letstour.fragment.JoinReqFragment;
 import com.example.letstour.fragment.MapFragment;
 import com.example.letstour.fragment.MyPostFragment;
+import com.example.letstour.fragment.MyRequestFragment;
 import com.example.letstour.services.BackgroundService;
 import com.example.letstour.services.CheckConnectivity;
+import com.example.letstour.utils.CommonConstant;
 import com.example.letstour.utils.CommonTask;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String CHANNEL_ID ="internet" ;
@@ -50,9 +54,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     private ActionBarDrawerToggle mToggle;
     private Intent backgroundService;
-    public static final String BROADCAST = "checkinternet";
     private IntentFilter intentFilter;
     private EventRepository eventRepository;
+    private boolean isShowing=false;
+    private AlertDialog alert;
     private static final int PERMISSION_REQUEST_CODE = 999;
 
     @Override
@@ -68,44 +73,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             notificationManager.createNotificationChannel(channel);
         }
         intentFilter = new IntentFilter();
-        intentFilter.addAction(BROADCAST);
+        intentFilter.addAction(CommonConstant.BROADCAST);
         Intent serviceIntent = new Intent(this, CheckConnectivity.class);
         startService(serviceIntent);
-
-        if (CheckConnectivity.isOnline(getApplicationContext())){
-           // Toast.makeText(getApplicationContext(),"true",Toast.LENGTH_SHORT).show();
-        }else{
-            showNotification();
-             Toast.makeText(getApplicationContext(),"Please Connect With Internet",Toast.LENGTH_SHORT).show();
-        }
 
         checkPermissions();
     }
 
-    private void showNotification() {
+    private void showInternetAlert() {
+        if (isShowing==false) {
+            isShowing=true;
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Please Connect With Internet");
+            builder.setCancelable(true);
+            alert = builder.create();
+            alert.show();
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_warning)
-                .setContentTitle("Warning !!!")
-                .setContentText("No Internet")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setAutoCancel(true);
-        NotificationManagerCompat compat = NotificationManagerCompat.from(this);
-        compat.notify(1, builder.build());
-        }
-
+        }}
 
     public BroadcastReceiver broadcastReceiver=new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().equals(BROADCAST)){
+            if (intent.getAction().equals(CommonConstant.BROADCAST)){
                 if (intent.getStringExtra("online_status").equals("true")){
-                   // Toast.makeText(getApplicationContext(),"true",Toast.LENGTH_SHORT).show();
-                    Log.d("data","true");
+                    // Toast.makeText(getApplicationContext(),"true",Toast.LENGTH_SHORT).show();
+                    isShowing=false;
+                    if (alert!=null){
+                        alert.dismiss();
+                    }
                 }else {
-                   // Toast.makeText(getApplicationContext(), "false", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getApplicationContext(),"Please Connect With Internet",Toast.LENGTH_SHORT).show();
-                    Log.d("data", "false");
+                    showInternetAlert();
                 }
             }
         }
@@ -166,6 +163,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onDestroy();
         eventRepository=new EventRepository(getApplicationContext());
         eventRepository.deleteAll();
+        stopService(backgroundService);
     }
 
     private void toolbar() {
@@ -184,8 +182,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ImageView ivUserImage = headerView.findViewById(R.id.imageView);
         title.setText(CommonTask.getDataFromSharedPreference(getApplicationContext(),CommonTask.USER_NAME));
        // Picasso.with(getApplicationContext()).load(CommonTask.getDataFromSharedPreference(getApplicationContext(),CommonTask.USER_IMAGE)).into(ivUserImage);
-        if (CommonTask.getDataFromSharedPreference(getApplicationContext(),CommonTask.AGENCY_NAME).equals("")){
+        Picasso.get().load(CommonTask.getDataFromSharedPreference(getApplicationContext(),CommonTask.USER_IMAGE)).into(ivUserImage);
+        if (CommonTask.getDataFromSharedPreference(getApplicationContext(), CommonTask.AGENCY_NAME).equals("")){
             hideItem();
+        }
+        else {
+            navigationView = (NavigationView) findViewById(R.id.homeNav);
+            Menu nav_Menu = navigationView.getMenu();
+            nav_Menu.findItem(R.id.nav_my_request).setVisible(false);
         }
 
     }
@@ -236,11 +240,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new MyPostFragment()).commit();
                 break;
             }
-            case R.id.nav_map: {
+            case R.id.nav_my_request: {
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_panel,
+                        new MyRequestFragment()).commit();
+                break;
+            }
+          /*  case R.id.nav_map: {
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_panel,
                         new MapFragment()).commit();
                 break;
-            }
+            }*/
             case R.id.nav_Logout: {
                 FirebaseAuth.getInstance().signOut();
                 CommonTask.addDataIntoSharedPreference(getApplicationContext(),CommonTask.USER_KEY,"");

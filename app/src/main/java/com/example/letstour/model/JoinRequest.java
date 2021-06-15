@@ -12,21 +12,24 @@ public class JoinRequest {
     private String user_num1;
     private String user_num2;
     private String key;
+    private String agency_name;
 
     public JoinRequest() {
     }
 
-    public JoinRequest(String agency_id,String event_id,String location, String user_id, String user_name, String user_email,String gender, String user_pri_num, String user_num1, String user_num2) {
-        this.agency_id=agency_id;
+    public JoinRequest(String agency_id, String event_id, String location, String user_id, String user_name, String user_email, String gender, String user_pri_num, String user_num1, String user_num2, String agency_name) {
+        this.agency_id = agency_id;
         this.event_id = event_id;
-        this.location=location;
+        this.location = location;
         this.user_id = user_id;
         this.user_name = user_name;
         this.user_email = user_email;
-        this.gender=gender;
+        this.gender = gender;
         this.user_pri_num = user_pri_num;
         this.user_num1 = user_num1;
         this.user_num2 = user_num2;
+        this.key = key;
+        this.agency_name = agency_name;
     }
 
     public String getAgency_id() {
@@ -76,5 +79,13 @@ public class JoinRequest {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public String getAgency_name() {
+        return agency_name;
+    }
+
+    public void setAgency_name(String agency_name) {
+        this.agency_name = agency_name;
     }
 }

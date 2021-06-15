@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin4dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/gl_center"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    app:layout_constraintGuide_percent=".75"
+    android:orientation="vertical"
+    />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardElevation="@dimen/dimen4dp"
+        app:cardBackgroundColor="@color/basicColor"
+        app:cardCornerRadius="@dimen/dimen4dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/padding16dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_my_req_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSizeXL"
+                android:text="Saint Martins"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSizeS"
+                android:paddingTop="@dimen/padding8dp"
+                android:paddingBottom="@dimen/padding8dp"
+                android:text="Organized By :"/>
+            <TextView
+                android:id="@+id/tv_my_req_agency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSizeL"
+                android:text="Travel Agency"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

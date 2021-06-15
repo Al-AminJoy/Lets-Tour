@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lets Tour</string>
+    <string name="app_name">Trip Pioneer</string>
     <string name="numberHint">Phone Number</string>
     <string name="etOfficeNumber">Office Number</string>
     <string name="etEmailAddress">Email Address</string>

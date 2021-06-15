@@ -1,7 +1,6 @@
 package com.example.letstour.fragment;
 
 import android.app.ProgressDialog;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,19 +9,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.letstour.R;
+import com.example.letstour.adapter.MyRequestAdapter;
 import com.example.letstour.adapter.PostAdapter;
+import com.example.letstour.model.JoinRequest;
 import com.example.letstour.model.Post;
-import com.example.letstour.utils.CommonConstant;
 import com.example.letstour.utils.CommonTask;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -32,24 +29,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static android.content.ContentValues.TAG;
-
-public class HomeFragment extends Fragment {
-    RecyclerView recyclerView;
+public class MyRequestFragment extends Fragment {
+    private RecyclerView recyclerView;
     private FirebaseFirestore db=FirebaseFirestore.getInstance();
-    List<Post> posts=new ArrayList<>();
-    PostAdapter adapter;
+    private List<JoinRequest> posts=new ArrayList<>();
+    private MyRequestAdapter adapter;
     private ProgressDialog progressDialog;
-    public HomeFragment() {
-        // Required empty public constructor
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        getActivity().setTitle("Trip Pioneer");
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        getActivity().setTitle("My Request");
+        return inflater.inflate(R.layout.fragment_my_request, container, false);
     }
 
     @Override
@@ -63,63 +54,25 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-       // load();
-        if (CommonTask.getDataFromSharedPreference(getContext(),CommonTask.AGENCY_NAME).equals("")){
-            load();
-        }
-        else{
-            loadAgencyPost();
-        }
+        load();
     }
-
-    private void loadAgencyPost() {
-        progressDialog.show();
-        posts.clear();
-        db.collection("post")
-                .whereEqualTo("agencyKey",CommonTask.getDataFromSharedPreference(getContext(),CommonTask.USER_KEY))
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Post data = document.toObject(Post.class);
-                                data.setKey(document.getId());
-                                posts.add(data);
-                                Toast.makeText(getContext(), "I am", Toast.LENGTH_SHORT).show();
-                            }
-                            Collections.reverse(posts);
-                            adapter=new PostAdapter(getContext(),posts);
-                            recyclerView.setAdapter(adapter);
-                            progressDialog.dismiss();
-                        } else {
-                        }
-                    }
-                })
-        .addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d("HOME", e.toString());
-            }
-        });
-    }
-
     private void load() {
         progressDialog.show();
-       posts.clear();
-        db.collection("post")
+        posts.clear();
+        db.collection("join_req")
+                .whereEqualTo("user_id", CommonTask.getDataFromSharedPreference(getContext(),CommonTask.USER_KEY))
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Post data = document.toObject(Post.class);
+                                JoinRequest data = document.toObject(JoinRequest.class);
                                 data.setKey(document.getId());
                                 posts.add(data);
                             }
                             Collections.reverse(posts);
-                            adapter=new PostAdapter(getContext(),posts);
+                            adapter=new MyRequestAdapter(getContext(),posts);
                             recyclerView.setAdapter(adapter);
                             progressDialog.dismiss();
                         } else {

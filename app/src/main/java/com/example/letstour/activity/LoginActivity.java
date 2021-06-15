@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btStart=findViewById(R.id.btStartId);
         btStart.setOnClickListener(this);
      if (currentUser!=null){
-          Toast.makeText(getApplicationContext(),"I am on Start",Toast.LENGTH_SHORT).show();
+        //  Toast.makeText(getApplicationContext(),"I am on Start",Toast.LENGTH_SHORT).show();
           startActivity(new Intent(LoginActivity.this,MainActivity.class));
           finish();
       }

@@ -24,13 +24,17 @@
             android:id="@+id/nav_cancel_req"
             android:icon="@drawable/ic_cancel"
             android:title="Cancel Request" />
-        <item
+      <!--  <item
             android:id="@+id/nav_map"
             android:icon="@drawable/ic_map"
-            android:title="Get Your Location" />
+            android:title="Get Your Location" />-->
+        <item
+            android:id="@+id/nav_my_request"
+            android:icon="@drawable/ic_request"
+            android:title="My Request" />
         <item
             android:id="@+id/nav_Logout"
-            android:icon="@drawable/ic_profile"
+            android:icon="@drawable/ic_logout"
             android:title="Logout" />
 
     </group>

@@ -235,7 +235,17 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/textSizeM"
                 />
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_event_desc_apply"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_event_desc_description"
+                android:text="Apply on This Event"
+                app:cornerRadius="@dimen/dimen4dp"
+                app:rippleColor="@color/basicLighter"
+                android:backgroundTint="@color/basicColor"
+                />
+<!--            <androidx.cardview.widget.CardView
                 android:id="@+id/cv_event_desc_apply"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -263,7 +273,7 @@
                         />
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>-->
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

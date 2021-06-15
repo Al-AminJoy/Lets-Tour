@@ -12,6 +12,7 @@ import android.os.SystemClock;
 import androidx.annotation.Nullable;
 
 import com.example.letstour.activity.MainActivity;
+import com.example.letstour.utils.CommonConstant;
 
 public class CheckConnectivity extends Service {
 
@@ -43,10 +44,10 @@ public class CheckConnectivity extends Service {
     private Runnable perioud =new Runnable() {
         @Override
         public void run() {
-            handler.postDelayed(perioud,30*1000- SystemClock.elapsedRealtime()%1000);
+            handler.postDelayed(perioud,10*1000- SystemClock.elapsedRealtime()%1000);
 
             Intent intent = new Intent();
-            intent.setAction(MainActivity.BROADCAST);
+            intent.setAction(CommonConstant.BROADCAST);
             intent.putExtra("online_status",""+isOnline(CheckConnectivity.this));
             sendBroadcast(intent);
         }

@@ -51,28 +51,28 @@ public class AgencySignUpActivity extends AppCompatActivity implements View.OnCl
         num1=etNum1.getText().toString().trim();
         num2=etNum2.getText().toString().trim();
         if (v.getId()==R.id.bt_Agency_SignUp){
-            if (name.length()<0 || name.length()>16){
+            if (name.isEmpty() || name.length()>16){
                 etName.findFocus();
                 etName.setError("");
                 return;
             }
 
-            if (address.length()<0 || address.length()>64){
+            if (address.isEmpty() || address.length()>64){
                 etAddress.findFocus();
                 etAddress.setError("");
                 return;
             }
-            if (primaryNumber.length()<0 || primaryNumber.length()>11){
+            if (primaryNumber.isEmpty() || primaryNumber.length()>11){
                 etPrimaryNum.findFocus();
                 etPrimaryNum.setError("");
                 return;
             }
-            if (num1.length()<0 || num1.length()>11){
+            if (num1.isEmpty() || num1.length()>11){
                 etNum1.findFocus();
                 etNum2.setError("");
                 return;
             }
-            if (num2.length()<0 || num2.length()>11){
+            if (num2.isEmpty() || num2.length()>11){
                 etNum2.findFocus();
                 etNum2.setError("");
                 return;
