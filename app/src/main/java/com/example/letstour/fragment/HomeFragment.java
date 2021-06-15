@@ -86,7 +86,7 @@ public class HomeFragment extends Fragment {
                                 Post data = document.toObject(Post.class);
                                 data.setKey(document.getId());
                                 posts.add(data);
-                                Toast.makeText(getContext(), "I am", Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(getContext(), "I am", Toast.LENGTH_SHORT).show();
                             }
                             Collections.reverse(posts);
                             adapter=new PostAdapter(getContext(),posts);

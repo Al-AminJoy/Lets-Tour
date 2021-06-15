@@ -15,13 +15,14 @@ import com.example.letstour.R;
 import com.example.letstour.model.User;
 import com.example.letstour.utils.CommonTask;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class UserSignUpActivity extends AppCompatActivity implements View.OnClickListener {
     private RadioButton gender;
     private RadioGroup radioGroup;
-    private Button btSignUp;
+    private MaterialButton btSignUp;
     private EditText etFirstName,etLastName,etAddress,etPrimaryNum,etNum1,etNum2;
     private String email,firstName,lastName,address,primaryNumber,num1,num2,userGender,userImage;
     FirebaseFirestore db=FirebaseFirestore.getInstance();
@@ -60,32 +61,32 @@ public class UserSignUpActivity extends AppCompatActivity implements View.OnClic
             primaryNumber=etPrimaryNum.getText().toString().trim();
             num1=etNum1.getText().toString().trim();
             num2=etNum2.getText().toString().trim();
-            if (firstName.length()<0 || firstName.length()>16){
+            if (firstName.isEmpty() || firstName.length()>16){
                 etFirstName.findFocus();
                 etFirstName.setError("");
                 return;
             }
-            if (lastName.length()<0 || lastName.length()>16){
+            if (lastName.isEmpty() || lastName.length()>16){
                 etLastName.findFocus();
                 etLastName.setError("");
                 return;
             }
-            if (address.length()<0 || address.length()>64){
+            if (address.isEmpty() || address.length()>64){
                 etAddress.findFocus();
                 etAddress.setError("");
                 return;
             }
-            if (primaryNumber.length()<0 || primaryNumber.length()>11){
+            if (primaryNumber.isEmpty() || primaryNumber.length()>11){
                 etPrimaryNum.findFocus();
                 etPrimaryNum.setError("");
                 return;
             }
-            if (num1.length()<0 || num1.length()>11){
+            if (num1.isEmpty() || num1.length()>11){
                 etNum1.findFocus();
                 etNum2.setError("");
                 return;
             }
-            if (num2.length()<0 || num2.length()>11){
+            if (num2.isEmpty() || num2.length()>11){
                 etNum2.findFocus();
                 etNum2.setError("");
                 return;

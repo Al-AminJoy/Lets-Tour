@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@color/basic"
+    android:background="@color/basicColor"
     tools:context=".activity.UserSignUpActivity">
 
     <androidx.cardview.widget.CardView
@@ -27,6 +27,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/textSizeM"
+                android:padding="@dimen/padding12dp"
+                android:background="@drawable/edit_text_border"
                 android:hint="First Name"
                 android:inputType="text" />
             <EditText
@@ -35,6 +37,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/textSizeM"
+                android:padding="@dimen/padding12dp"
+                android:background="@drawable/edit_text_border"
                 android:hint="Last Name"
                 android:inputType="text" />
             <EditText
@@ -43,6 +47,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/textSizeM"
+                android:padding="@dimen/padding12dp"
+                android:background="@drawable/edit_text_border"
                 android:hint="Address"
                 android:inputType="text"
                 />
@@ -96,6 +102,8 @@
                 android:textSize="@dimen/textSizeM"
                 android:hint="Primary Number"
                 android:inputType="number"
+                android:padding="@dimen/padding12dp"
+                android:background="@drawable/edit_text_border"
                 android:digits="0123456789"/>
 
             <EditText
@@ -106,6 +114,8 @@
                 android:hint="Number 1 (Optional)"
                 android:textSize="@dimen/textSizeM"
                 android:inputType="number"
+                android:padding="@dimen/padding12dp"
+                android:background="@drawable/edit_text_border"
                 android:digits="0123456789" />
             <EditText
                 android:id="@+id/et_user_SignUp_Num2"
@@ -115,9 +125,11 @@
                 android:hint="Number 2 (Optional)"
                 android:textSize="@dimen/textSizeM"
                 android:inputType="number"
+                android:padding="@dimen/padding12dp"
+                android:background="@drawable/edit_text_border"
                 android:digits="0123456789" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/bt_user_SignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -125,6 +137,8 @@
                 android:textSize="@dimen/textSizeM"
                 android:background="@color/white"
                 android:layout_gravity="end"
+                app:cornerRadius="@dimen/dimen8dp"
+                app:rippleColor="@color/basicLighter"
                 android:text="Sign Up" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@color/basic"
+    android:background="@color/basicColor"
     tools:context=".activity.AgencySignUpActivity">
 
         <androidx.cardview.widget.CardView
@@ -27,6 +27,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/textSizeM"
+                    android:padding="@dimen/padding12dp"
+                    android:background="@drawable/edit_text_border"
                     android:hint="Agency Name"
                     android:inputType="text" />
                 <EditText
@@ -35,6 +37,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/textSizeM"
+                    android:padding="@dimen/padding12dp"
+                    android:background="@drawable/edit_text_border"
                     android:hint="Agency Address"
                     android:inputType="text" />
                 <EditText
@@ -44,6 +48,8 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/textSizeM"
                     android:hint="Primary Number"
+                    android:padding="@dimen/padding12dp"
+                    android:background="@drawable/edit_text_border"
                     android:inputType="number"
                     android:digits="0123456789"/>
 
@@ -55,6 +61,8 @@
                     android:hint="Number 1 (Optional)"
                     android:textSize="@dimen/textSizeM"
                     android:inputType="number"
+                    android:padding="@dimen/padding12dp"
+                    android:background="@drawable/edit_text_border"
                     android:digits="0123456789" />
                 <EditText
                     android:id="@+id/et_Agency_SignUp_Num2"
@@ -64,15 +72,19 @@
                     android:hint="Number 2 (Optional)"
                     android:textSize="@dimen/textSizeM"
                     android:inputType="number"
+                    android:padding="@dimen/padding12dp"
+                    android:background="@drawable/edit_text_border"
                     android:digits="0123456789" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/bt_Agency_SignUp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:textSize="@dimen/textSizeM"
+                    app:cornerRadius="@dimen/dimen8dp"
                     android:background="@color/white"
+                    app:rippleColor="@color/basicLighter"
                     android:layout_gravity="end"
                     android:text="Sign Up" />
             </LinearLayout>

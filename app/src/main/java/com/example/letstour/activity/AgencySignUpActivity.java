@@ -21,7 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class AgencySignUpActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText etName,etAddress,etPrimaryNum,etNum1,etNum2;
     private String email,name,address,primaryNumber,num1,num2,userImage;
-    private Button btSignUp;
+    private MaterialButton btSignUp;
     FirebaseFirestore db=FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {

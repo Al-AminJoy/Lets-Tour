@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/basic"
+    android:background="@color/basicColor"
     android:gravity="center"
     android:padding="@dimen/padding10dp"
     tools:context=".fragment.CreatePostFragment">
@@ -39,6 +39,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="70"
                 android:inputType="text"
+                android:padding="@dimen/padding12dp"
+                android:background="@drawable/edit_text_border"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textSizeM"/>
 
@@ -62,6 +64,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="70"
+                android:padding="@dimen/padding12dp"
+                android:background="@drawable/edit_text_border"
                 android:inputType="number"
                 android:digits="0123456789"
                 android:textColor="@color/black"
@@ -88,6 +92,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="70"
                 android:inputType="number"
+                android:padding="@dimen/padding12dp"
+                android:background="@drawable/edit_text_border"
                 android:digits="0123456789"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textSizeM"/>
@@ -113,6 +119,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="70"
                 android:inputType="text"
+                android:padding="@dimen/padding12dp"
+                android:background="@drawable/edit_text_border"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textSizeM"/>
 
@@ -185,8 +193,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin8dp"
+            android:layout_marginRight="@dimen/dimen16dp"
+            android:layout_marginStart="@dimen/dimen16dp"
             android:padding="@dimen/padding8dp"
-            android:background="@color/light"
             android:orientation="vertical">
 
             <EditText
@@ -194,9 +203,9 @@
                 android:gravity="start"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:backgroundTint="@color/light"
-                android:background="@color/light"
-                android:lines="20"
+                android:padding="@dimen/padding12dp"
+                android:background="@drawable/edit_text_border"
+                android:lines="10"
                 android:textColor="@color/black"
                 android:textCursorDrawable="@color/black"
                 android:layout_marginTop="@dimen/margin8dp"
@@ -214,10 +223,10 @@
             android:padding="@dimen/padding14dp"
             app:rippleColor="@color/black"
             android:text="Post"
-            android:backgroundTint="@color/basic"
+            android:backgroundTint="@color/basicColor"
             app:strokeColor="@color/white"
             app:strokeWidth="@dimen/margin2dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="@dimen/textSizeM"
             />
     </LinearLayout>

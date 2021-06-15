@@ -6,6 +6,7 @@
 
     <color name="basicColor">#D3A007</color>
     <color name="basicLighter">#ba962b</color>
+    <color name="transparent">#E8E6E6</color>
 
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
