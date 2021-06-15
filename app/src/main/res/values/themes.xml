@@ -2,15 +2,15 @@
     <!-- Base application theme. -->
     <style name="Theme.LetsTour" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/basic</item>
-        <item name="colorPrimaryVariant">@color/basic</item>
+        <item name="colorPrimary">@color/basicColor</item>
+        <item name="colorPrimaryVariant">@color/basicColor</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/basic</item>
-        <item name="colorSecondaryVariant">@color/basic</item>
+        <item name="colorSecondary">@color/basicColor</item>
+        <item name="colorSecondaryVariant">@color/basicColor</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/basicLighter</item>
         <!-- Customize your theme here. -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -25,6 +25,6 @@
 
     <style name="Theme.MyApplication.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     <style name="ProgressColor" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="colorAccent">@color/basic</item>
+        <item name="colorAccent">@color/basicColor</item>
     </style>
 </resources>

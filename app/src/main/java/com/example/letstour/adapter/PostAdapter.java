@@ -53,6 +53,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
         holder.tvDate.setText("Date : "+list.getDate());
         holder.tvPerson.setText("Limit : "+list.getPerson());
         holder.tvCost.setText("Cost : "+list.getCost());
+        holder.tvBordering.setText("Bordering : "+list.getBorderingPoint());
       /*  holder.tvBordering.setText("Bordering : "+list.getBorderingPoint());
         holder.tvDecsDate.setText("Date : "+list.getDate());*/
        /* holder.ivDropDown.setOnClickListener(new View.OnClickListener() {
@@ -125,7 +126,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(context, DescriptionActivity.class);
-                intent.putExtra("POST",list.getKey());
+                intent.putExtra("POST",list);
                 context.startActivity(intent);
             }
         });

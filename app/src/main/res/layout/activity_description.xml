@@ -1,196 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/padding4dp"
+    android:orientation="vertical"
     tools:context=".activity.DescriptionActivity">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <include
+        layout="@layout/toolbar_content"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        />
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/tv_event_des_location"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="Saint Martins"
-            android:textSize="@dimen/textSizeXL"
-            android:textColor="@color/black"
-            android:padding="@dimen/padding8dp"
-            />
-        <ImageView
-            android:id="@+id/iv_event_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_event_des_location"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/saint_martins_island"
-            android:scaleType="fitXY"/>
-
-        <LinearLayout
-            android:id="@+id/lin_event_desc_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/iv_event_desc"
-            android:background="@color/black"
-            android:layout_marginTop="@dimen/margin8dp"
-            android:padding="10dp"
-            >
-            <LinearLayout
+            android:padding="@dimen/padding4dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tv_event_des_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                >
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white_text_color"
-                        android:text="Event Start : "
-                        android:textStyle="bold"
-
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white_text_color"
-                        android:text="23/10/20"
-                        />
-
-                </LinearLayout>
-                <View
-                    android:layout_width="2dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/white_text_color"/>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:gravity="end"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white_text_color"
-                        android:text="Seats : "
-                        android:textStyle="bold"
-
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white_text_color"
-                        android:text="20"
-                        />
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                >
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white_text_color"
-                        android:text="Cost : "
-                        android:textStyle="bold"
-
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white_text_color"
-                        android:text="5000/-"
-                        />
-
-                </LinearLayout>
-                <View
-                    android:layout_width="2dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginRight="2dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/white"/>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:gravity="end"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:text="Bordering : "
-                        android:textStyle="bold"
-
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:text="Mazar road"
-                        />
-                </LinearLayout>
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/white"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="Saint Martins"
+                android:textSize="@dimen/textSizeXL"
+                android:textColor="@color/black"
+                android:padding="@dimen/padding8dp"
                 />
+            <ImageView
+                android:id="@+id/iv_event_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_event_des_location"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/saint_martins_island"
+                android:scaleType="fitXY"/>
+
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:text="Agency : "
-                    android:textStyle="bold"
-
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:text="Tour Agency Name"
-                    />
-            </LinearLayout>
-
-         <!--   <androidx.cardview.widget.CardView
+                android:id="@+id/lin_event_desc_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="3dp"
-                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/iv_event_desc"
+                android:background="@color/black"
+                android:layout_marginTop="@dimen/margin8dp"
+                android:padding="10dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    >
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white_text_color"
+                            android:text="Event Start : "
+                            android:textStyle="bold"
+
+                            />
+                        <TextView
+                            android:id="@+id/tv_event_desc_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white_text_color"
+                            android:text="23/10/20"
+                            />
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/white_text_color"/>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="end"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white_text_color"
+                            android:text="Seats : "
+                            android:textStyle="bold"
+
+                            />
+                        <TextView
+                            android:id="@+id/tv_event_desc_seat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white_text_color"
+                            android:text="20"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    >
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white_text_color"
+                            android:text="Cost : "
+                            android:textStyle="bold"
+
+                            />
+                        <TextView
+                            android:id="@+id/tv_event_desc_cost"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white_text_color"
+                            android:text="5000/-"
+                            />
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"/>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="end"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text="Bordering : "
+                            android:textStyle="bold"
+
+                            />
+                        <TextView
+                            android:id="@+id/tv_event_desc_bordering"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text="Mazar road"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="Agency : "
+                        android:textStyle="bold"
+
+                        />
+                    <TextView
+                        android:id="@+id/tv_event_desc_agency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="Tour Agency Name"
+                        />
+                </LinearLayout>
+
+                <!--   <androidx.cardview.widget.CardView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       app:cardCornerRadius="3dp"
+                       android:layout_marginTop="10dp"
+                       app:cardBackgroundColor="@color/basicColor">
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent">
+                           <TextView
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:padding="10dp"
+                               android:text="Per Person Price : 10000 Taka"
+                               android:textStyle="bold"
+                               android:textColor="@color/white"
+                               android:gravity="center"
+                               android:background="@color/basicColor"
+                               />
+                       </LinearLayout>
+
+                   </androidx.cardview.widget.CardView>-->
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_event_desc_description"
+                app:layout_constraintTop_toBottomOf="@id/lin_event_desc_info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/saint_description"
+                android:layout_marginTop="@dimen/margin16dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSizeM"
+                />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_event_desc_apply"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_event_desc_description"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="3dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:clickable="true"
                 app:cardBackgroundColor="@color/basicColor">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -199,58 +255,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
-                        android:text="Per Person Price : 10000 Taka"
+                        android:text="Apply On This Event"
                         android:textStyle="bold"
-                        android:textColor="@color/white"
+                        android:textColor="@color/white_text_color"
                         android:gravity="center"
                         android:background="@color/basicColor"
                         />
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>-->
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </LinearLayout>
-        <TextView
-            android:id="@+id/tv_event_desc_description"
-            app:layout_constraintTop_toBottomOf="@id/lin_event_desc_info"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/saint_description"
-            android:layout_marginTop="@dimen/margin16dp"
-            android:textColor="@color/black"
-            android:textSize="@dimen/textSizeM"
-            />
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_event_desc_apply"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tv_event_desc_description"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="3dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="24dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:clickable="true"
-            app:cardBackgroundColor="@color/basicColor">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="Apply On This Event"
-                    android:textStyle="bold"
-                    android:textColor="@color/white_text_color"
-                    android:gravity="center"
-                    android:background="@color/basicColor"
-                    />
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>
+    </ScrollView>
+</LinearLayout>

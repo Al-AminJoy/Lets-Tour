@@ -7,6 +7,8 @@
         android:layout_marginTop="@dimen/margin4dp"
         android:layout_marginBottom="@dimen/margin4dp"
         android:id="@+id/rv"
+        android:layout_marginStart="@dimen/margin8dp"
+        android:layout_marginEnd="@dimen/margin8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
