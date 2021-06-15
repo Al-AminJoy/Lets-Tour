@@ -3,8 +3,11 @@ package com.example.letstour.activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.graphics.drawable.Icon;
 import android.hardware.Sensor;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +36,7 @@ public class DescriptionActivity extends AppCompatActivity {
     private TextView tvLocation,tvCost,tvDate,tvPerson,tvBordering,tvAgency,tvDescription;
     private MaterialButton btJoin;
     private FirebaseFirestore db;
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +50,25 @@ public class DescriptionActivity extends AppCompatActivity {
         if (!CommonTask.getDataFromSharedPreference(this, CommonTask.AGENCY_NAME).equals("")){
             btJoin.setVisibility(View.GONE);
         }
+        toolBar();
         db=FirebaseFirestore.getInstance();
         checkJoined();
+    }
+
+    private void toolBar() {
+        toolbar = findViewById(R.id.main_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.white));
+        getSupportActionBar().setTitle("Details");
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
@@ -67,8 +88,9 @@ public class DescriptionActivity extends AppCompatActivity {
                 String pri_num=CommonTask.getDataFromSharedPreference(getApplicationContext(),CommonTask.USER_PRI_NUMBER);
                 String num1=CommonTask.getDataFromSharedPreference(getApplicationContext(),CommonTask.USER_NUMBER1);
                 String num2=CommonTask.getDataFromSharedPreference(getApplicationContext(),CommonTask.USER_NUMBER2);
+                String image=CommonTask.getDataFromSharedPreference(getApplicationContext(),CommonTask.USER_IMAGE);
                 String agency_name=post.getAgencyName();
-                JoinRequest request=new JoinRequest(agency_id,event_id,location,uid,name,email,gender,pri_num,num1,num2,agency_name);
+                JoinRequest request=new JoinRequest(agency_id,event_id,location,uid,name,email,gender,pri_num,num1,num2,agency_name,image);
 
                 btJoin.setEnabled(false);
                 db.collection("join_req").add(request)

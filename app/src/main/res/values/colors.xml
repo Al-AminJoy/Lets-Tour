@@ -2,7 +2,7 @@
 <resources>
     <color name="light">#4FC1F4</color>
     <color name="basic">#44B7EC</color>
-    <color name="secondary">#41ADDF</color>
+    <color name="secondary">#8BC34A</color>
 
     <color name="basicColor">#D3A007</color>
     <color name="basicLighter">#ba962b</color>
@@ -15,6 +15,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#FF0000</color>
 
     <color name="white_text_color">#FFFFFFFF</color>
     <color name="basic_text_color">#33ccff</color>

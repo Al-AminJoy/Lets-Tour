@@ -44,12 +44,14 @@ public class JoinReqFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        getActivity().setTitle("Request");
         return inflater.inflate(R.layout.fragment_join_req, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getActivity().setTitle("Request");
         recyclerView=view.findViewById(R.id.rv);
         initRecyclerView();
         intProgress();

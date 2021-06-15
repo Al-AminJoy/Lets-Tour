@@ -47,6 +47,8 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String CHANNEL_ID ="internet" ;
     private DrawerLayout drawerLayout;
@@ -116,8 +118,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onStart() {
         super.onStart();
-
-       toolbar = findViewById(R.id.main_toolbar);
+        toolbar = findViewById(R.id.main_toolbar);
        navigationView=findViewById(R.id.homeNav);
        drawerLayout=findViewById(R.id.drawer_layout);
        toolbar();
@@ -179,10 +180,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
       View headerView = navigationView.getHeaderView(0);
        // SharedPreferences spHeader = getSharedPreferences(SharedPref.AppPackage, Context.MODE_PRIVATE);
         TextView title = headerView.findViewById(R.id.textView);
-        ImageView ivUserImage = headerView.findViewById(R.id.imageView);
+        CircleImageView ivUserImage = headerView.findViewById(R.id.imageView);
         title.setText(CommonTask.getDataFromSharedPreference(getApplicationContext(),CommonTask.USER_NAME));
        // Picasso.with(getApplicationContext()).load(CommonTask.getDataFromSharedPreference(getApplicationContext(),CommonTask.USER_IMAGE)).into(ivUserImage);
-        Picasso.get().load(CommonTask.getDataFromSharedPreference(getApplicationContext(),CommonTask.USER_IMAGE)).into(ivUserImage);
+        String user_image=CommonTask.getDataFromSharedPreference(getApplicationContext(),CommonTask.USER_IMAGE);
+        if (!user_image.equals("")){
+            Picasso.get().load(CommonTask.getDataFromSharedPreference(getApplicationContext(),CommonTask.USER_IMAGE)).into(ivUserImage);
+        }
+        else {
+            ivUserImage.setImageResource(R.drawable.profile);
+        }
         if (CommonTask.getDataFromSharedPreference(getApplicationContext(), CommonTask.AGENCY_NAME).equals("")){
             hideItem();
         }
@@ -199,8 +206,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Menu nav_Menu = navigationView.getMenu();
         nav_Menu.findItem(R.id.nav_Profile).setVisible(false);
         nav_Menu.findItem(R.id.nav_join_req).setVisible(false);
-        nav_Menu.findItem(R.id.nav_cancel_req).setVisible(false);
-        nav_Menu.findItem(R.id.nav_My_Post).setVisible(false);
+       // nav_Menu.findItem(R.id.nav_cancel_req).setVisible(false);
+      //  nav_Menu.findItem(R.id.nav_My_Post).setVisible(false);
     }
     private void loadFragment() {
         getSupportFragmentManager().beginTransaction().replace(R.id.main_panel,new HomeFragment()).commit();
@@ -222,13 +229,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }
             case R.id.nav_join_req: {
-
-
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_panel,
                         new JoinReqFragment()).commit();
                 break;
             }
-            case R.id.nav_cancel_req: {
+           /* case R.id.nav_cancel_req: {
 
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_panel,
@@ -239,7 +244,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_panel,
                         new MyPostFragment()).commit();
                 break;
-            }
+            }*/
             case R.id.nav_my_request: {
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_panel,
                         new MyRequestFragment()).commit();

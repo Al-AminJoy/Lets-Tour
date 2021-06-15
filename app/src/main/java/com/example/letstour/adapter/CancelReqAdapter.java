@@ -39,7 +39,7 @@ public class CancelReqAdapter extends RecyclerView.Adapter<RequestViewHolder> {
     public void onBindViewHolder(@NonNull RequestViewHolder holder, int position) {
         CancelRequest list=requests.get(position);
         holder.tvName.setText("Name : "+list.getUser_name());
-        holder.tvPrimary.setText("Number : "+list.getUser_pri_num());
+        holder.tvPrimary.setText("Phone : "+list.getUser_pri_num());
        holder.btApprove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

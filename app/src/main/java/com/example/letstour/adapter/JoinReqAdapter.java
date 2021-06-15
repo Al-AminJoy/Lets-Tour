@@ -1,6 +1,7 @@
 package com.example.letstour.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Icon;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import com.example.letstour.viewholder.RequestViewHolder;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -43,8 +45,17 @@ public class JoinReqAdapter extends RecyclerView.Adapter<RequestViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull RequestViewHolder holder, int position) {
         JoinRequest list=requests.get(position);
-        holder.tvName.setText("Name : "+list.getUser_name());
-        holder.tvPrimary.setText("Number : "+list.getUser_pri_num());
+        holder.tvName.setText(list.getUser_name());
+        holder.tvPrimary.setText(list.getUser_pri_num());
+        holder.tvPrimary.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_phone, 0, 0, 0);
+        holder.tvLocation.setText(list.getLocation());
+        holder.tvEmail.setText(list.getUser_email());
+        holder.tvEmail.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_email, 0, 0, 0);
+        if (list.getUser_image()==null ||list.getUser_image().equals("")){
+            Picasso.get().load(R.drawable.profile).into(holder.ivProfile);
+        }else {
+            Picasso.get().load(list.getUser_image()).into(holder.ivProfile);
+        }
         holder.btApprove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

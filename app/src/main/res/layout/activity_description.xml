@@ -25,8 +25,9 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:text="Saint Martins"
+                android:background="@color/secondary"
                 android:textSize="@dimen/textSizeXL"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:padding="@dimen/padding8dp"
                 />
             <ImageView
