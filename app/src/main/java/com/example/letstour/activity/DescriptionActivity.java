@@ -5,7 +5,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.Icon;
 import android.hardware.Sensor;
@@ -15,7 +18,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.letstour.R;
+import com.example.letstour.adapter.EnrolledAdapter;
 import com.example.letstour.adapter.JoinReqAdapter;
+import com.example.letstour.adapter.PostAdapter;
+import com.example.letstour.model.EventUser;
 import com.example.letstour.model.JoinRequest;
 import com.example.letstour.model.Post;
 import com.example.letstour.utils.CommonTask;
@@ -29,14 +35,20 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class DescriptionActivity extends AppCompatActivity {
     private Post post;
-    private TextView tvLocation,tvCost,tvDate,tvPerson,tvBordering,tvAgency,tvDescription;
+    private TextView tvLocation,tvCost,tvDate,tvPerson,tvBordering,tvAgency,tvDescription,tvEnrolled;
     private MaterialButton btJoin;
     private FirebaseFirestore db;
     private Toolbar toolbar;
+    private RecyclerView recyclerView;
+    private List<EventUser> eventUsers=new ArrayList<>();
+    private EnrolledAdapter adapter;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +65,55 @@ public class DescriptionActivity extends AppCompatActivity {
         toolBar();
         db=FirebaseFirestore.getInstance();
         checkJoined();
+        recyclerView=findViewById(R.id.rv);
+        initRecyclerView();
+        intProgress();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (!CommonTask.getDataFromSharedPreference(getApplicationContext(), CommonTask.AGENCY_NAME).equals("")){
+            tvEnrolled.setVisibility(View.VISIBLE);
+            load();
+        }
+    }
+    private void load() {
+        progressDialog.show();
+        db.collection("event_user")
+                .whereEqualTo("event_id",post.getKey())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                EventUser data = document.toObject(EventUser.class);
+                                data.setKey(document.getId());
+                                eventUsers.add(data);
+                            }
+                            Collections.reverse(eventUsers);
+                            adapter=new EnrolledAdapter(getApplicationContext(),eventUsers);
+                            recyclerView.setAdapter(adapter);
+                            progressDialog.dismiss();
+                        } else {
+                        }
+                    }
+                });
+    }
+    private void intProgress() {
+        progressDialog = new ProgressDialog(this, R.style.ProgressColor);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+    }
+
+    private void initRecyclerView() {
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext());
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+    }
     private void toolBar() {
         toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
@@ -149,10 +208,7 @@ public class DescriptionActivity extends AppCompatActivity {
         tvDescription.setText(post.getDescription());
         tvAgency.setText(post.getAgencyName());
     }
-    private void joinRequest(){
 
-
-    }
     private void initView() {
         tvLocation=findViewById(R.id.tv_event_des_location);
         tvCost=findViewById(R.id.tv_event_desc_cost);
@@ -162,6 +218,7 @@ public class DescriptionActivity extends AppCompatActivity {
         tvAgency=findViewById(R.id.tv_event_desc_agency);
         tvDescription=findViewById(R.id.tv_event_desc_description);
         btJoin=findViewById(R.id.bt_event_desc_apply);
+        tvEnrolled=findViewById(R.id.tv_enrolled);
     }
 
 }

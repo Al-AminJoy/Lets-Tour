@@ -25,7 +25,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:text="Saint Martins"
-                android:background="@color/secondary"
+                android:background="@color/basicColor"
                 android:textSize="@dimen/textSizeXL"
                 android:textColor="@color/white"
                 android:padding="@dimen/padding8dp"
@@ -200,29 +200,6 @@
                         />
                 </LinearLayout>
 
-                <!--   <androidx.cardview.widget.CardView
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       app:cardCornerRadius="3dp"
-                       android:layout_marginTop="10dp"
-                       app:cardBackgroundColor="@color/basicColor">
-                       <LinearLayout
-                           android:layout_width="match_parent"
-                           android:layout_height="match_parent">
-                           <TextView
-                               android:layout_width="match_parent"
-                               android:layout_height="wrap_content"
-                               android:padding="10dp"
-                               android:text="Per Person Price : 10000 Taka"
-                               android:textStyle="bold"
-                               android:textColor="@color/white"
-                               android:gravity="center"
-                               android:background="@color/basicColor"
-                               />
-                       </LinearLayout>
-
-                   </androidx.cardview.widget.CardView>-->
-
             </LinearLayout>
             <TextView
                 android:id="@+id/tv_event_desc_description"
@@ -246,35 +223,26 @@
                 app:rippleColor="@color/basicLighter"
                 android:backgroundTint="@color/basicColor"
                 />
-<!--            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_event_desc_apply"
+            <TextView
+                android:id="@+id/tv_enrolled"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tv_event_desc_description"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="3dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="24dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:clickable="true"
-                app:cardBackgroundColor="@color/basicColor">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:text="Apply On This Event"
-                        android:textStyle="bold"
-                        android:textColor="@color/white_text_color"
-                        android:gravity="center"
-                        android:background="@color/basicColor"
-                        />
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>-->
+                android:textSize="@dimen/textSizeL"
+                android:text="Enrolled"
+                android:layout_marginTop="@dimen/margin8dp"
+                android:gravity="center"
+                android:padding="@dimen/padding8dp"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/bt_event_desc_apply"
+                android:background="@color/basicColor"/>
+            <include
+                app:layout_constraintTop_toBottomOf="@id/tv_enrolled"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin8dp"
+                android:layout_width="match_parent"
+                layout="@layout/recyclerview_layout"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
