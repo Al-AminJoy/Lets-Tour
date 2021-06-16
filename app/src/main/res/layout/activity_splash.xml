@@ -7,13 +7,26 @@
     android:background="@color/basicColor"
     tools:context=".activity.SplashActivity">
     <TextView
+        android:id="@+id/tv_splash_app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trip Pioneer"
+        android:textSize="@dimen/textSizeM"
+        android:textColor="@color/white"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="8dp"
+        />
+    <TextView
+        android:id="@+id/tv_splash_app_motto"
+        android:layout_below="@id/tv_splash_app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Let's Tour"
-        android:textSize="24sp"
-        android:textColor="#ffff"
+        android:textSize="@dimen/textSizeL"
+        android:textColor="@color/white"
         android:layout_centerInParent="true"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/margin14dp"
+        android:visibility="invisible"
         />
 
 </RelativeLayout>
