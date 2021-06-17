@@ -1,6 +1,8 @@
 package com.example.letstour.fragment;
 
 import android.app.ProgressDialog;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -9,11 +11,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.letstour.R;
@@ -35,11 +40,13 @@ import java.util.List;
 import static android.content.ContentValues.TAG;
 
 public class HomeFragment extends Fragment {
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
     private FirebaseFirestore db=FirebaseFirestore.getInstance();
-    List<Post> posts=new ArrayList<>();
-    PostAdapter adapter;
+    private List<Post> posts=new ArrayList<>();
+    private PostAdapter adapter;
     private ProgressDialog progressDialog;
+    private SearchView searchView;
+    private SwipeRefreshLayout swipeRefreshLayout;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -56,20 +63,52 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView=view.findViewById(R.id.rv);
+        searchView=view.findViewById(R.id.searchView);
+        swipeRefreshLayout=view.findViewById(R.id.swip_refresh);
         initRecyclerView();
         intProgress();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(false);
+                if (CommonTask.getDataFromSharedPreference(getContext(),CommonTask.AGENCY_NAME).equals("")){
+                    posts.clear();
+                    load();
+                }
+                else{
+                    posts.clear();
+                    loadAgencyPost();
+                }
+            }
+        });
+
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
-       // load();
         if (CommonTask.getDataFromSharedPreference(getContext(),CommonTask.AGENCY_NAME).equals("")){
             load();
         }
         else{
             loadAgencyPost();
         }
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                // Toast.makeText(getContext(), newText, Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
     }
 
     private void loadAgencyPost() {
@@ -90,6 +129,7 @@ public class HomeFragment extends Fragment {
                             }
                             Collections.reverse(posts);
                             adapter=new PostAdapter(getContext(),posts);
+                            adapter.notifyDataSetChanged();
                             recyclerView.setAdapter(adapter);
                             progressDialog.dismiss();
                         } else {
