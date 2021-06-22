@@ -42,6 +42,7 @@ public class CreatePostFragment extends Fragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        getActivity().setTitle("Create Post");
         return inflater.inflate(R.layout.fragment_create_post, container, false);
     }
 

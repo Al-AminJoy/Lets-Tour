@@ -11,6 +11,7 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 
 import android.Manifest;
 import android.app.NotificationChannel;
@@ -217,19 +218,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (item.getItemId()) {
             case R.id.nav_Home: {
-                getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.main_panel,
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_panel,
                         new HomeFragment()).commit();
                 break;
             }
             case R.id.nav_Profile: {
 
 
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_panel,
+                getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.main_panel,
                         new CreatePostFragment()).commit();
                 break;
             }
             case R.id.nav_join_req: {
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_panel,
+                getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.main_panel,
                         new JoinReqFragment()).commit();
                 break;
             }
@@ -246,7 +247,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }*/
             case R.id.nav_my_request: {
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_panel,
+                getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.main_panel,
                         new MyRequestFragment()).commit();
                 break;
             }
@@ -291,6 +292,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        finish();
+        Fragment fragment=getSupportFragmentManager().findFragmentById(R.id.main_panel);
+        if (fragment instanceof HomeFragment){
+            getFragmentManager().popBackStackImmediate();
+        }
+        else if (fragment instanceof CreatePostFragment){
+            getFragmentManager().popBackStackImmediate();
+        }
+        else if (fragment instanceof JoinReqFragment){
+            getFragmentManager().popBackStackImmediate();
+        }
+        else if (fragment instanceof MyRequestFragment){
+            getFragmentManager().popBackStackImmediate();
+        }
+        /*else if (fragment instanceof ) {
+
+        }*/
+        else {
+            finish();
+        }
     }
 }
