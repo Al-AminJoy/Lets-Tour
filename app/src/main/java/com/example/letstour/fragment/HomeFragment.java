@@ -118,7 +118,6 @@ public class HomeFragment extends Fragment {
                                 data.setKey(document.getId());
                                 posts.add(data);
                             }
-                            Collections.reverse(posts);
                             adapter=new PostAdapter(getContext(),posts);
                             recyclerView.setAdapter(adapter);
                             progressDialog.dismiss();
@@ -144,6 +143,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());
         linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
     }
