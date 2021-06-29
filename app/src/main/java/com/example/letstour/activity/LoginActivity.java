@@ -135,7 +135,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 String fName=data.getFirst_name();
                                 String lName=data.getLast_name();
                                 String fullName=fName+" "+lName;
-                                CommonTask.addDataIntoSharedPreference(getApplicationContext(),CommonTask.USER_KEY,data.getKey());
+                                CommonTask.addDataIntoSharedPreference(getApplicationContext(),CommonTask.USER_KEY,document.getId());
                                 CommonTask.addDataIntoSharedPreference(getApplicationContext(),CommonTask.AGENCY_NAME,"");
                                 CommonTask.addDataIntoSharedPreference(getApplicationContext(),CommonTask.USER_NAME,fullName);
                                 CommonTask.addDataIntoSharedPreference(getApplicationContext(),CommonTask.USER_EMAIL,data.getEmail());
@@ -168,7 +168,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 agencyExist=true;
                                 Agency data = document.toObject(Agency.class);
-                                CommonTask.addDataIntoSharedPreference(getApplicationContext(),CommonTask.USER_KEY,data.getKey());
+                                CommonTask.addDataIntoSharedPreference(getApplicationContext(),CommonTask.USER_KEY,document.getId());
                                 CommonTask.addDataIntoSharedPreference(getApplicationContext(),CommonTask.AGENCY_NAME,data.getName());
                                 CommonTask.addDataIntoSharedPreference(getApplicationContext(),CommonTask.USER_NAME,data.getName());
                                 CommonTask.addDataIntoSharedPreference(getApplicationContext(),CommonTask.USER_EMAIL,data.getEmail());

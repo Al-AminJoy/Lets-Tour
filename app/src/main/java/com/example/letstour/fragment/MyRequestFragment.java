@@ -60,7 +60,7 @@ public class MyRequestFragment extends Fragment {
         progressDialog.show();
         posts.clear();
         db.collection("join_req")
-                .whereEqualTo("user_id", CommonTask.getDataFromSharedPreference(getContext(),CommonTask.USER_KEY))
+                .whereEqualTo("user_email", CommonTask.getDataFromSharedPreference(getContext(),CommonTask.USER_EMAIL))
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

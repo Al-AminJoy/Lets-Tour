@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.graphics.drawable.Icon;
 import android.hardware.Sensor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,6 +50,7 @@ public class DescriptionActivity extends AppCompatActivity {
     private List<EventUser> eventUsers=new ArrayList<>();
     private EnrolledAdapter adapter;
     private ProgressDialog progressDialog;
+    private static final String TAG = "DescriptionActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,6 +141,8 @@ public class DescriptionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String agency_id=post.getAgencyKey();
                 String uid= CommonTask.getDataFromSharedPreference(getApplicationContext(),CommonTask.USER_KEY);
+                //Toast.makeText(DescriptionActivity.this, uid, Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onClick: "+uid);
                 String event_id=post.getKey();
                 String location=post.getLocation();
                 String name=CommonTask.getDataFromSharedPreference(getApplicationContext(),CommonTask.USER_NAME);
